@@ -3,4 +3,4 @@ werkzeug==2.2.3
 python-dotenv==0.21.0
 stripe==14.4.1
 google-cloud-firestore==2.25.0
-gunicorn==25.1.0
+gunicorn==23.0.0
