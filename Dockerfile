@@ -1,23 +1,15 @@
-FROM python:3.9.7
+FROM python:3.9.7-slim
 
-ENV APP_HOME /app
-ENV TZ="America/New_York"
+ENV APP_HOME=/app
+ENV TZ=America/New_York
 WORKDIR $APP_HOME
-COPY . ./
 
-RUN pip install -r requirements.txt
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
+COPY . .
+
+ENV PORT=8080
 EXPOSE 8080
 
-CMD python app.pyFROM python:3.9.7
-
-ENV APP_HOME /app
-ENV TZ="America/New_York"
-WORKDIR $APP_HOME
-COPY . ./
-
-RUN pip install -r requirements.txt
-
-EXPOSE 8080
-
-CMD python app.py
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
