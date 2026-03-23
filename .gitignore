@@ -1,0 +1,4 @@
+.env
+firestore-key.json
+__pycache__/
+*.pyc
