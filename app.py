@@ -348,23 +348,13 @@ STRIPE_LINKS = {
     "black_single": {
         "label": "Black",
         "price": "$59.99",
-        "url": "https://buy.stripe.com/test_6oU5kF6J84596oR1Db3cc00",
+        "url": "https://buy.stripe.com/test_6oU5kF6J84596oR1Db3cc00"
     },
     "white_single": {
         "label": "White",
         "price": "$59.99",
-        "url": "https://buy.stripe.com/test_6oU5kF6J84596oR1Db3cc00",
-    },
-    "bundle_2": {
-        "label": "2 For Deal",
-        "price": "$99.99",
-        "url": "https://buy.stripe.com/test_6oU5kF6J84596oR1Db3cc00",
-    },
-    "bundle_3": {
-        "label": "3 For Deal",
-        "price": "$129.99",
-        "url": "https://buy.stripe.com/test_6oU5kF6J84596oR1Db3cc00",
-    },
+        "url": "https://buy.stripe.com/test_6oU5kF6J84596oR1Db3cc00"
+    }
 }
  
 HTML = """
@@ -787,7 +777,7 @@ HTML = """
   </style>
 </head>
 <body>
-  <div class="announcement">LIMITED-TIME BUNDLE DEALS + FREE SHIPPING</div>
+  <div class="announcement">FREE SHIPPING + SECURE CHECKOUT</div>
 
   <nav class="navbar">
     <div class="nav-inner">
@@ -835,25 +825,27 @@ HTML = """
           <div class="price-wrap">
             <div class="price" id="displayPrice">$59.99</div>
             <div class="old-price">$79.99</div>
-            <div class="save">BUNDLE DEALS AVAILABLE</div>
+            <div class="save">QUANTITY ADJUSTABLE AT CHECKOUT</div>
           </div>
 
           <ul class="benefits">
             <li>✔ Thumb-sized wearable POV camera for effortless hands-free recording</li>
             <li>✔ Compact clip-on design that sits naturally on your clothing</li>
             <li>✔ Great for content creation, daily moments, travel, cycling, and real-life POV footage</li>
-            <li>✔ Available in Black or White, plus 2-pack and 3-pack bundle deals</li>
+            <li>✔ Available in Black or White with adjustable quantity at checkout</li>
           </ul>
 
-          <div class="variant-group">
-            <div class="variant-label">Choose your option</div>
-            <div class="variant-options">
-              <button class="variant-btn active" onclick="setVariant(this, 'black_single')">Black</button>
-              <button class="variant-btn" onclick="setVariant(this, 'white_single')">White</button>
-              <button class="variant-btn" onclick="setVariant(this, 'bundle_2')">2 For Deal</button>
-              <button class="variant-btn" onclick="setVariant(this, 'bundle_3')">3 For Deal</button>
+            <div class="variant-group">
+              <div class="variant-label">Choose your color</div>
+              <div class="variant-options">
+                <button class="variant-btn active" onclick="setVariant(this, 'black_single')">Black</button>
+                <button class="variant-btn" onclick="setVariant(this, 'white_single')">White</button>
+              </div>
             </div>
-          </div>
+            
+            <div class="checkout-note" style="margin-top: 10px;">
+              Quantity can be adjusted securely at checkout.
+            </div>
 
           <div class="stock">In stock — available in Black and White</div>
 
@@ -1021,7 +1013,7 @@ HTML = """
           </div>
           <div class="faq-item">
             <h3>What colors are available?</h3>
-            <p>VirexCam™ is available in Black and White, with bundle options for buying multiple units.</p>
+            <p>VirexCam™ is available in Black and White. You can adjust quantity during checkout</p>
           </div>
           <div class="faq-item">
             <h3>What comes with the offer?</h3>
@@ -1041,7 +1033,7 @@ HTML = """
   <div class="sticky-buy">
     <div class="meta">
       <strong>VirexCam™</strong>
-      <span id="stickyPrice">$59.99 · Bundle Deals Available</span>
+      <span id="stickyPrice">$59.99 · Quantity Adjustable At Checkout</span>
     </div>
     <a class="btn btn-primary" id="stickyBuyBtn" href="/buy/black_single">Buy Now</a>
   </div>
@@ -1064,7 +1056,7 @@ HTML = """
     function updateVariantDisplay() {
       const variant = variants[selectedVariant];
       document.getElementById('displayPrice').textContent = variant.price;
-      document.getElementById('stickyPrice').textContent = `${variant.price} · Bundle Deals Available`;
+      document.getElementById('stickyPrice').textContent = `${variant.price} · Quantity Adjustable At Checkout`;
       document.getElementById('checkoutNote').textContent = `${variant.label} selected — secure checkout enabled.`;
 
       const buyHref = `/buy/${selectedVariant}`;
@@ -1079,6 +1071,8 @@ HTML = """
 </body>
 </html>
 """
+
+
 
 ADMIN_HTML = """
 <!DOCTYPE html>
