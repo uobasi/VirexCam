@@ -347,8 +347,8 @@ def send_shipping_email(order):
 STRIPE_LINKS = {
     "black_single": {
         "label": "Black",
-        "price": "$59.99",
-        "url": "https://buy.stripe.com/test_6oU5kF6J84596oR1Db3cc00"
+        "price": "$89.99",
+        "url": "https://buy.stripe.com/6oUdRbgjIatxdRjepX3cc03"
     },
     "white_single": {
         "label": "White",
