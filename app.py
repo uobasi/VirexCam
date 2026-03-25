@@ -855,8 +855,8 @@ HTML = """
           <div class="price-wrap">
             <div class="price" id="displayPrice">$89.99</div>
             <div class="old-price">$129.99</div>
-            <div class="save">QUANTITY ADJUSTABLE AT CHECKOUT</div>
             <div class="save">30% OFF</div>
+            <div class="save">QUANTITY ADJUSTABLE AT CHECKOUT</div>
           </div>
 
           <ul class="benefits">
