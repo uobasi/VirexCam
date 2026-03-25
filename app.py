@@ -401,11 +401,32 @@ HTML = """
     .announcement {
       background: var(--accent);
       color: white;
-      text-align: center;
-      padding: 12px 16px;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      padding: 12px 0;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.4px;
+    }
+
+    .announcement-track {
+      display: inline-block;
+      padding-left: 100%;
+      animation: announcement-scroll 18s linear infinite;
+    }
+
+    .announcement:hover .announcement-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes announcement-scroll {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
     }
 
     .navbar {
@@ -773,11 +794,20 @@ HTML = """
         width: 100%;
         text-align: center;
       }
+
+      .announcement {
+        font-size: 12px;
+        padding: 10px 0;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="announcement">FREE SHIPPING + SECURE CHECKOUT</div>
+  <div class="announcement">
+    <div class="announcement-track">
+      🚚 FREE SHIPPING • 🔒 SECURE CHECKOUT • 🔥 30% OFF TODAY • 🚚 FREE SHIPPING • 🔒 SECURE CHECKOUT • 🔥 30% OFF TODAY •
+    </div>
+  </div>
 
   <nav class="navbar">
     <div class="nav-inner">
@@ -823,7 +853,7 @@ HTML = """
           <div class="rating">★★★★★ Simple. Powerful. Always on.</div>
 
           <div class="price-wrap">
-            <div class="price" id="displayPrice">$59.99</div>
+            <div class="price" id="displayPrice">$89.99</div>
             <div class="old-price">$129.99</div>
             <div class="save">QUANTITY ADJUSTABLE AT CHECKOUT</div>
             <div class="save">30% OFF</div>
@@ -1034,7 +1064,7 @@ HTML = """
   <div class="sticky-buy">
     <div class="meta">
       <strong>VirexCam™</strong>
-      <span id="stickyPrice">$59.99 · Quantity Adjustable At Checkout</span>
+      <span id="stickyPrice">$89.99 · Quantity Adjustable At Checkout</span>
     </div>
     <a class="btn btn-primary" id="stickyBuyBtn" href="/buy/black_single">Buy Now</a>
   </div>
