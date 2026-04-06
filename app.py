@@ -348,12 +348,12 @@ STRIPE_LINKS = {
     "black_single": {
         "label": "Black",
         "price": "$89.99",
-        "url": "https://buy.stripe.com/6oUdRbgjIatxdRjepX3cc03"
+        "url": "https://buy.stripe.com/00w00l8RgfNR5kN4Pn3cc04"
     },
     "white_single": {
         "label": "White",
         "price": "$89.99",
-        "url": "https://buy.stripe.com/cNi6oJ2sS4594gJ0z73cc02"
+        "url": "https://buy.stripe.com/00w00l8RgfNR5kN4Pn3cc04"
     }
 }
  
@@ -1671,7 +1671,7 @@ def stripe_webhook():
         )
         address = shipping_details.get("address", {}) if shipping_details else {}
 
-        # Retrieve line items so we can get product name and quantity
+        # Get product info
         full_session = stripe.checkout.Session.retrieve(
             session["id"],
             expand=["line_items"]
@@ -1685,6 +1685,13 @@ def stripe_webhook():
             first_item = line_items[0]
             product_name = first_item.get("description")
             quantity = first_item.get("quantity")
+
+        # 🚨 FILTER: Only process VirexCam orders
+        if not product_name or "virexcam" not in product_name.lower():
+            print("🚫 Ignoring non-VirexCam order:", product_name)
+            return "IGNORED", 200
+
+        print("✅ Processing VirexCam order:", product_name)
 
         order_data = {
             "created_at": datetime.now(timezone.utc).isoformat(),
@@ -1719,7 +1726,7 @@ def stripe_webhook():
         if email_sent:
             print("✅ SAVED TO FIRESTORE + EMAIL SENT")
         else:
-            print("✅ SAVED TO FIRESTORE, BUT EMAIL FAILED")
+            print("⚠️ SAVED TO FIRESTORE, BUT EMAIL FAILED")
             print(order_data)
 
     return "OK", 200
