@@ -348,12 +348,12 @@ STRIPE_LINKS = {
     "black_single": {
         "label": "Black",
         "price": "$89.99",
-        "url": "https://buy.stripe.com/00w00l8RgfNR5kN4Pn3cc04"
+        "url": "https://buy.stripe.com/6oUdRbgjIatxdRjepX3cc03"
     },
     "white_single": {
         "label": "White",
         "price": "$89.99",
-        "url": "https://buy.stripe.com/00w00l8RgfNR5kN4Pn3cc04"
+        "url": "https://buy.stripe.com/cNi6oJ2sS4594gJ0z73cc02"
     }
 }
  
